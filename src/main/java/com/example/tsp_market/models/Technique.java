@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Technique {
-    private int id;
+    private Long ID;
     private String title;
     private String description;
     private int price;

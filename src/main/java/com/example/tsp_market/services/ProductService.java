@@ -10,26 +10,26 @@ import java.util.List;
 @Service
 public class ProductService {
     private List<Technique> products = new ArrayList<>();
-    private int id = 0;
+    private long ID = 0;
     {
-        products.add(new Technique(++id,"PlayStation 5", "Simple description", 1000, "IMAGE"));
-        products.add(new Technique(++id ,"Nothingphone", "Simple description", 2000, "IMAGE"));
+        products.add(new Technique(++ID,"PlayStation 5", "Simple description", 1000, "IMAGE"));
+        products.add(new Technique(++ID ,"Nothingphone", "Simple description", 2000, "IMAGE"));
     }
 
     public List<Technique> listProducts() {return products;}
 
     public void saveProduct(Technique product) {
-        product.setId(++id);
+        product.setID(++ID);
         products.add(product);
     }
 
-    public void removeProduct(int id) {
-        products.removeIf(product -> product.getId() == id);
+    public void removeProduct(Long id) {
+        products.removeIf(product -> product.getID().equals(id));
     }
 
-    public Technique getProductById(int id) {
+    public Technique getProductById(Long id) {
         for (Technique product : products) {
-            if (product.getId() == id) return product;
+            if (product.getID().equals(id)) return product;
         }
         return null;
     }

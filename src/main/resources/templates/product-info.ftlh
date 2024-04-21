@@ -12,7 +12,7 @@
 <b>Изображение товара: </b>${product.image}<br>
 <hr>
 <h3>Создать новый товар</h3>
-<form action="/product/delete/${product.id}" method="post">
+<form action="/product/delete/${product.ID}" method="post">
     <input type="submit" value="Удалить товар"/>
 </form>
 </body>

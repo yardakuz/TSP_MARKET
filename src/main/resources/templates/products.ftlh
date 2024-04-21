@@ -10,7 +10,7 @@
     <div>
         <p>
             <b>${product.title}</b>
-            ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a>
+            ${product.price} руб. | <a href="/product/${product.ID}">Подробнее...</a>
         </p>
     </div>
 </#list>
