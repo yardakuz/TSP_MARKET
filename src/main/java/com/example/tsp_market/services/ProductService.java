@@ -2,35 +2,34 @@ package com.example.tsp_market.services;
 
 
 import com.example.tsp_market.models.Technique;
+import com.example.tsp_market.repositories.TechniqueRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-    private List<Technique> products = new ArrayList<>();
-    private long ID = 0;
-    {
-        products.add(new Technique(++ID,"PlayStation 5", "Simple description", 1000, "IMAGE"));
-        products.add(new Technique(++ID ,"Nothingphone", "Simple description", 2000, "IMAGE"));
+    private final TechniqueRepository techniqueRepository;
+
+    public List<Technique> listProducts(String title) {
+        if(title != null) return techniqueRepository.findByTitle(title);
+        return techniqueRepository.findAll();
     }
 
-    public List<Technique> listProducts() {return products;}
-
     public void saveProduct(Technique product) {
-        product.setID(++ID);
-        products.add(product);
+        log.info("Saving new {}", product);
+        techniqueRepository.save(product);
     }
 
     public void removeProduct(Long id) {
-        products.removeIf(product -> product.getID().equals(id));
+        techniqueRepository.deleteById(id);
     }
 
     public Technique getProductById(Long id) {
-        for (Technique product : products) {
-            if (product.getID().equals(id)) return product;
-        }
-        return null;
+       return techniqueRepository.findById(id).orElse(null);
     }
 }

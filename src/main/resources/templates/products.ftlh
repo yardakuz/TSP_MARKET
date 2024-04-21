@@ -6,6 +6,10 @@
 <body>
 <h1>TSP</h1><hr>
 <h4>Список товаров</h4>
+<form action="/" method="get">
+    Поиск по названию товара: <input type="text" name="title"><br>
+    <input type="submit" value="Поиск"/>
+</form>
 <#list products as product>
     <div>
         <p>
@@ -13,6 +17,8 @@
             ${product.price} руб. | <a href="/product/${product.ID}">Подробнее...</a>
         </p>
     </div>
+    <#else>
+    <h3>Товаров  нет</h3>
 </#list>
 <hr>
 <h3>Создать новый товар</h3>
