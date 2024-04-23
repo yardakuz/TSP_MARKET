@@ -43,4 +43,9 @@ public class Technique {
         dateOfCreated = LocalDateTime.now();
     }
 
+    public void addImageToProduct(Image image) {
+        image.setProduct(this);
+        images.add(image);
+    }
+
 }

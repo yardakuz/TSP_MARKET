@@ -26,7 +26,10 @@
     Название товара: <input type="text" name="title"/><br><br>
     Описание товара: <input type="text" name="description"/><br><br>
     Цена товара: <input type="number" name="price"/><br><br>
-    Изображение товара: <input type="text" name="image"/><br><br>
+    Первая фотография: <input type="file" name="file1"/><br><br>
+    Вторая фотография: <input type="file" name="file2"/><br><br>
+    Третья фотография: <input type="file" name="file3"/><br><br>
+
     <input type="submit" value="Добавить товар"/>
 </form>
 </body>
