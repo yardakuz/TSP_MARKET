@@ -4,7 +4,11 @@
     <title>TSP</title>
 </head>
 <body>
-<h1>TSP</h1><hr>
+<h1>TSP | <a href="/login">Войти</a> </h1><hr>
+<form action="/logout" method="post">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <input type="submit" value="Выйти">
+</form>
 <h4>Список товаров</h4>
 <form action="/" method="get">
     Поиск по названию товара: <input type="text" name="title"><br>
@@ -14,7 +18,7 @@
     <div>
         <p>
             <b>${product.title}</b>
-            ${product.price} руб. | <a href="/product/${product.ID}">Подробнее...</a>
+            ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a>
         </p>
     </div>
     <#else>
@@ -29,7 +33,6 @@
     Первая фотография: <input type="file" name="file1"/><br><br>
     Вторая фотография: <input type="file" name="file2"/><br><br>
     Третья фотография: <input type="file" name="file3"/><br><br>
-
     <input type="submit" value="Добавить товар"/>
 </form>
 </body>

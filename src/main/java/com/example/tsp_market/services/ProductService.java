@@ -43,7 +43,7 @@ public class ProductService {
 
         log.info("Saving new Product. Title: {}; Author: {}", product.getTitle(), product.getTitle());
         Technique productFromDb = techniqueRepository.save(product);
-        productFromDb.setPreviewimageId(productFromDb.getImages().get(0).getId());
+        productFromDb.setPreviewImageId(productFromDb.getImages().get(0).getId());
         techniqueRepository.save(product);
     }
 
