@@ -12,6 +12,11 @@
 <b>Название товара: </b>${product.title}<br>
 <b>Описание товара: </b>${product.description}<br>
 <b>Цена товара: </b>${product.price}<br>
-<b>Изображение товара: </b>${product.image}<br>
+<hr>
+<form action="/product/delete/${product.id}" method="post">
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <input type="submit" value="Удалить товар"/>
+</form>
+<!-- <b>Изображение товара: </b>$//{product.image}<br> -->
 </body>
 </html>
