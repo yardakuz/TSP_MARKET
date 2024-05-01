@@ -3,13 +3,16 @@ package com.example.tsp_market.services;
 
 import com.example.tsp_market.models.Image;
 import com.example.tsp_market.models.Technique;
+import com.example.tsp_market.models.User;
 import com.example.tsp_market.repositories.TechniqueRepository;
+import com.example.tsp_market.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 @Slf4j
@@ -17,13 +20,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService {
     private final TechniqueRepository techniqueRepository;
+    private final UserRepository userRepository;
 
     public List<Technique> listProducts(String title) {
         if(title != null) return techniqueRepository.findByTitle(title);
         return techniqueRepository.findAll();
     }
 
-    public void saveProduct(Technique product, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
+    public void saveProduct(Principal principal, Technique product, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
+        product.setUser(getUserByPrincipal(principal));
         Image image1;
         Image image2;
         Image image3;
@@ -45,6 +50,11 @@ public class ProductService {
         Technique productFromDb = techniqueRepository.save(product);
         productFromDb.setPreviewImageId(productFromDb.getImages().get(0).getId());
         techniqueRepository.save(product);
+    }
+
+    public User getUserByPrincipal(Principal principal) {
+        if(principal == null) return new User();
+        return userRepository.findByEmail(principal.getName());
     }
 
     private Image toImageEntity(MultipartFile file) throws IOException {
