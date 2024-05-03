@@ -15,7 +15,7 @@
 </#if> <hr>
 <h4>Список товаров</h4>
 <form action="/" method="get">
-    Поиск по названию товара: <input type="text" name="title"><br>
+    Поиск по названию товара: <input type="text" name="title">
     <input type="submit" value="Поиск"/>
 </form>
 <#list products as product>
