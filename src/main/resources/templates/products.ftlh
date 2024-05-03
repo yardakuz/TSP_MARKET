@@ -7,12 +7,17 @@
 <h1>TSP</h1><gr></gr>
 <#if user.email??>
     <h3>Имя пользователя: <i>${user.name}</i></h3>
-<form action="/logout" method="post">
-    <input type="hidden" name="_csrf" value="${_csrf.token}">
-    <input type="submit" value="Выйти">
-</form>
-<#else ><a href="/login">Войти</a>
-</#if> <hr>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="submit" value="Выйти">
+    </form>
+    <#if user.isAdmin()>
+        <a href="/admin">Панель администратора</a>
+    </#if>
+<#else>
+    <a href="/login">Войти</a>
+</#if>
+<hr>
 <h4>Список товаров</h4>
 <form action="/" method="get">
     Поиск по названию товара: <input type="text" name="title">
