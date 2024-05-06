@@ -19,7 +19,7 @@
     <#list users as user>
         <tr>
             <th>${user.email}</th>
-            <th></th>
+            <th><#if user.phoneNumber?has_content>${user.phoneNumber}<#else>None</#if></th>
             <th><#if user.active>true<#else>false</#if></th>
             <th><#list user.roles as role>${role}</#list></th>
             <th>
