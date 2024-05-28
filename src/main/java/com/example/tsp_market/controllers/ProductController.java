@@ -28,10 +28,11 @@ public class ProductController {
     }
 
     @GetMapping("/product/{id}")
-    public String productInfo(@PathVariable Long id, Model model){
+    public String productInfo(@PathVariable Long id, Principal principal, Model model){
         Technique product = productService.getProductById(id);
         model.addAttribute("product", product);
         model.addAttribute("images", product.getImages());
+        model.addAttribute("user", productService.getUserByPrincipal(principal));
         return "product-info";
     }
 
@@ -47,4 +48,11 @@ public class ProductController {
         return "redirect:/";
 
     }
+
+    @PostMapping("/product/cart")
+    public String addToCart(@RequestParam("productId") Long productId, Principal principal, Model model) {
+
+        return "redirect:/";
+    }
+
 }

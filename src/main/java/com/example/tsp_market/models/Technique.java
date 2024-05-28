@@ -41,6 +41,9 @@ public class Technique {
     private User user;
     private LocalDateTime dateOfCreated;
 
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    private List<Order> orders = new ArrayList<>();
+
     @PrePersist
     private void init(){
         dateOfCreated = LocalDateTime.now();
@@ -50,5 +53,6 @@ public class Technique {
         image.setProduct(this);
         images.add(image);
     }
+
 
 }

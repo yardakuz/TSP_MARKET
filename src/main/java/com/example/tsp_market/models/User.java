@@ -40,6 +40,10 @@ public class User implements UserDetails {
     private List<Technique> products = new ArrayList<>();
     private LocalDateTime dateOfCreated;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    private List<Order> orders = new ArrayList<>();
+    private LocalDateTime dateOfOrderCreated;
+
     @PrePersist
     private void init(){
         dateOfCreated = LocalDateTime.now();

@@ -27,13 +27,20 @@
     <div>
         <p>
             <b>${product.title}</b>
-            ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a>
+            ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a> |
+            <#if !user.isAdmin()>
+                <form action=""
+
+
+
+
+                <input type="submit" value="Добавить в корзину"> </#if>
         </p>
     </div>
     <#else>
     <h3>Товаров  нет</h3>
 </#list>
-<#if user.email??>
+<#if user.isAdmin()>
 <hr>
 <h3>Создать новый товар</h3>
 <form action="/product/create" method="post" enctype="multipart/form-data">

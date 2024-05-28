@@ -24,7 +24,7 @@ public class AdminController {
     @GetMapping("/admin")
     public String admin(Model model){
         model.addAttribute("users", userService.list());
-        return "admin";
+        return "admin_panel";
     }
 
     @PostMapping("/admin/user/ban/{id}")
