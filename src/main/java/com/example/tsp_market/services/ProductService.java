@@ -21,6 +21,7 @@ import java.util.List;
 public class ProductService {
     private final TechniqueRepository techniqueRepository;
     private final UserRepository userRepository;
+    private List<Long> Cart;
 
     public List<Technique> listProducts(String title) {
         if(title != null) return techniqueRepository.findByTitle(title);
@@ -73,5 +74,15 @@ public class ProductService {
 
     public Technique getProductById(Long id) {
        return techniqueRepository.findById(id).orElse(null);
+    }
+
+    public void AddToCart(Long id){
+        Cart.add(id);
+    }
+
+    public Technique getCart(List<Long> Cart){
+        for (int i = 0; i < Cart.size(); i++){
+
+        }
     }
 }
