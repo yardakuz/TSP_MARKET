@@ -31,7 +31,7 @@
             <#if !user.isAdmin() && user.email??>
                 <form action="product/cart/${product.id}" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}">
-                    <input type="submit" value="Добавить в корзину">
+                    <input type="submit"  value="Добавить в корзину">
                 </form>
             </#if>
         </p>

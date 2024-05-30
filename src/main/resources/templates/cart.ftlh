@@ -11,7 +11,7 @@
     <div>
         <p>
             <b>${product.title}</b>
-
+            ${product.price} руб.
 
 
 

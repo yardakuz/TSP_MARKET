@@ -54,5 +54,8 @@ public class Technique {
         images.add(image);
     }
 
+    @ManyToMany(mappedBy = "techniques")
+    private List<Order> orders = new ArrayList<>();
+
 
 }
