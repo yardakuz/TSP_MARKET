@@ -46,13 +46,25 @@ public class ProductController {
     public String deleteProduct(@PathVariable Long id) {
         productService.removeProduct(id);
         return "redirect:/";
-
     }
 
-    @PostMapping("/product/cart")
-    public String addToCart(@RequestParam("productId") Long productId, Principal principal, Model model) {
-
+    @PostMapping("/product/cart/{id}")
+    public String addToCart(@PathVariable Long id) {
+        productService.AddToCart(id);
         return "redirect:/";
     }
+
+   /* @GetMapping("/userCart")
+    public String Cart(Model model){
+        if (productService.isInCart(id)) {
+            Technique product = productService.getProductById(id);
+            model.addAttribute("cart", productService.getCart() );
+            model.addAttribute("product", product);
+
+        }
+        return "cart";
+    }*/
+
+
 
 }

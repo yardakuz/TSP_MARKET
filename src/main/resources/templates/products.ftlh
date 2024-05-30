@@ -28,13 +28,12 @@
         <p>
             <b>${product.title}</b>
             ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a> |
-            <#if !user.isAdmin()>
-                <form action=""
-
-
-
-
-                <input type="submit" value="Добавить в корзину"> </#if>
+            <#if !user.isAdmin() && user.email??>
+                <form action="product/cart/${product.id}" method="post">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}">
+                    <input type="submit" value="Добавить в корзину">
+                </form>
+            </#if>
         </p>
     </div>
     <#else>
@@ -53,6 +52,9 @@
     <input type="hidden" name = "_csrf" value="${_csrf.token}">
     <input type="submit" value="Добавить товар"/>
 </form>
+</#if>
+<#if !user.isAdmin()>
+    <a href="/userCart">Корзина</a>
 </#if>
 </body>
 </html>

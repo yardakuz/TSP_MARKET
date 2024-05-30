@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -21,7 +22,7 @@ import java.util.List;
 public class ProductService {
     private final TechniqueRepository techniqueRepository;
     private final UserRepository userRepository;
-    private List<Long> Cart;
+    private List<Long> Cart = new ArrayList<>();
 
     public List<Technique> listProducts(String title) {
         if(title != null) return techniqueRepository.findByTitle(title);
@@ -80,9 +81,12 @@ public class ProductService {
         Cart.add(id);
     }
 
-    public Technique getCart(List<Long> Cart){
-        for (int i = 0; i < Cart.size(); i++){
+    public boolean isInCart(Long id){
+        if (Cart.contains(id)) return true;
+        return false;
+    }
 
-        }
+    public List<Long> getCart(){
+        return Cart;
     }
 }
