@@ -54,7 +54,7 @@
 </form>
 </#if>
 <#if !user.isAdmin()>
-    <a href="/userCart">Корзина</a>
+    <a href="/user-cart">Корзина</a>
 </#if>
 </body>
 </html>

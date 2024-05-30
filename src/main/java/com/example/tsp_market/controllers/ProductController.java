@@ -54,17 +54,10 @@ public class ProductController {
         return "redirect:/";
     }
 
-   /* @GetMapping("/userCart")
-    public String Cart(Model model){
-        if (productService.isInCart(id)) {
-            Technique product = productService.getProductById(id);
-            model.addAttribute("cart", productService.getCart() );
-            model.addAttribute("product", product);
-
-        }
+    @GetMapping("/user-cart")
+    public String cart(Principal principal, Model model) {
+        model.addAttribute("cart", productService.getCart());
         return "cart";
-    }*/
-
-
+    }
 
 }

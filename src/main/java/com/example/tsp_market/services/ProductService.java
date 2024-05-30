@@ -22,7 +22,7 @@ import java.util.List;
 public class ProductService {
     private final TechniqueRepository techniqueRepository;
     private final UserRepository userRepository;
-    private List<Long> Cart = new ArrayList<>();
+    private List<Technique> Cart = new ArrayList<>();
 
     public List<Technique> listProducts(String title) {
         if(title != null) return techniqueRepository.findByTitle(title);
@@ -78,15 +78,15 @@ public class ProductService {
     }
 
     public void AddToCart(Long id){
-        Cart.add(id);
+        Cart.add(getProductById(id));
     }
 
     public boolean isInCart(Long id){
-        if (Cart.contains(id)) return true;
+        if (Cart.contains(getProductById(id))) return true;
         return false;
     }
 
-    public List<Long> getCart(){
+    public List<Technique> getCart(){
         return Cart;
     }
 }
