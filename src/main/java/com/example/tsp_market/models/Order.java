@@ -21,9 +21,6 @@ public class Order {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "userID")
-    private String userID;
-
     @Column(name = "price")
     private int price;
 

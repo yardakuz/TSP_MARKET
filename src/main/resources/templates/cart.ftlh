@@ -24,5 +24,9 @@
 <#else>
     <h3>Товаров нет</h3>
 </#list>
+<form action="/order/create" method="post">
+    <input type="hidden" name="order" value="${cart}">
+    <input type="submit" value="Создать заказ"/>
+</form>
 </body>
 </html>
