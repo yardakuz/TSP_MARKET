@@ -24,18 +24,20 @@ public class OrderService {
     private final UserRepository userRepository;
     private final TechniqueRepository techniqueRepository;
     private final ProductService productService;
-    private List<Technique> cart = new ArrayList<>();
+    //private List<Technique> cart = new ArrayList<>();
 
 
 
-    public boolean createOrder(Order order, Principal principal, User user) {
-        cart = productService.getCart();
-        Long id = order.getId();
+    public boolean createOrder(Order order, List<Technique> techniques, Principal principal) {
+        int price = 0;
+        for (Technique technique : techniques) {
+            price += technique.getPrice();
+        }
+        order.setPrice(price);
         order.setActive(true);
-        //order.setUser(getUserBy);
         order.setUser(productService.getUserByPrincipal(principal));
-        order.setTechniques(cart);
-        log.info("Saving new order with id: {}", id);
+        order.setTechniques(techniques);
+        log.info("Saving new order");
         orderRepository.save(order);
         return true;
     }

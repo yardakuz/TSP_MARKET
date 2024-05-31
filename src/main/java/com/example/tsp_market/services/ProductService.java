@@ -78,7 +78,8 @@ public class ProductService {
     }
 
     public void AddToCart(Long id){
-        Cart.add(getProductById(id));
+        if(!Cart.contains(getProductById(id))) Cart.add(getProductById(id));
+        //иначе ++ к количеству.
     }
 
     public boolean isInCart(Long id){
@@ -88,5 +89,10 @@ public class ProductService {
 
     public List<Technique> getCart(){
         return Cart;
+    }
+
+    public List<Technique> delCart()
+    {
+        return Cart = new ArrayList<>();
     }
 }

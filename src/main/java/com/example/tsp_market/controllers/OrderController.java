@@ -1,11 +1,9 @@
 package com.example.tsp_market.controllers;
 
-import com.example.tsp_market.models.Image;
-import com.example.tsp_market.models.Order;
-import com.example.tsp_market.models.Technique;
-import com.example.tsp_market.models.User;
+import com.example.tsp_market.models.*;
 import com.example.tsp_market.models.enums.Role;
 import com.example.tsp_market.repositories.ImageRepository;
+import com.example.tsp_market.repositories.TechniqueRepository;
 import com.example.tsp_market.services.OrderService;
 import com.example.tsp_market.services.ProductService;
 import com.example.tsp_market.services.UserService;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayInputStream;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +30,8 @@ public class OrderController {
     private final ProductService productService;
     private final OrderService orderService;
     private final UserService userService;
+    private final TechniqueRepository techniqueRepository;
+    private OrderTechnique orderTechnique;
 
 
     @GetMapping("/admin/order")
@@ -41,9 +42,12 @@ public class OrderController {
 
     //создание заказа
     @PostMapping("/order/create")
-    public String createOrder(@ModelAttribute("order") Order order, Principal principal, User user){
-        orderService.createOrder(order, principal, user);
-        return "redirect:/order_panel";
+    public String createOrder(Order order,Technique technique, Principal principal, @RequestParam("techniques[]") Long[] techniqueIds, @RequestParam("amount") int amount, Model model){
+        List<Technique> techniques = techniqueRepository.findAllById(List.of(techniqueIds));
+        //techniques.add(technique);
+        orderService.createOrder(order, techniques, principal);
+        productService.delCart();
+        return "redirect:/";
     }
 
     //Обновление состояния заказа

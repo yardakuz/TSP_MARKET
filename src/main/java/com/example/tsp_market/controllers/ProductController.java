@@ -2,7 +2,10 @@ package com.example.tsp_market.controllers;
 
 import com.example.tsp_market.models.Technique;
 import com.example.tsp_market.services.ProductService;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.RequiredArgsConstructor;
+import netscape.javascript.JSObject;
+import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.security.Principal;
 
@@ -57,6 +59,7 @@ public class ProductController {
     @GetMapping("/user-cart")
     public String cart(Principal principal, Model model) {
         model.addAttribute("cart", productService.getCart());
+        //model.addAttribute("cartJson", productService.getUserByPrincipal(principal));
         return "cart";
     }
 

@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE )
     @Column(name = "id")
     private Long id;
 
@@ -36,6 +36,7 @@ public class Order {
     @JoinTable(name = "order-technique",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "technique_id")
+
     )
     private List<Technique> techniques;
 

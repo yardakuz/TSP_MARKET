@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>TSP</title>
 </head>
@@ -7,25 +8,21 @@
 <h1>TSP</h1><gr></gr>
 <hr>
 <h4>Корзина пользователя</h4>
-<#list cart as product>
-    <div>
-        <p>
-            <b>${product.title}</b>
-            ${product.price} руб.
-
-
-
-
-
-
-
-        </p>
-    </div>
-<#else>
-    <h3>Товаров нет</h3>
-</#list>
-<form action="/order/create" method="post">
-    <input type="hidden" name="order" value="${cart}">
+<form method="post" action="/order/create" modelAttribute="technique">
+    <#list cart as product>
+        <div>
+            <p>
+                <b>${product.title}</b>
+                ${product.price} руб. <input type="number" name="amount">
+            </p>
+        </div>
+    <#else>
+        <h3>Товаров нет</h3>
+    </#list>
+    <#list cart as product>
+    <input type="hidden" name="techniques[]" value="${product.id}"/>
+    </#list>
+    <input type="hidden" name = "_csrf" value="${_csrf.token}">
     <input type="submit" value="Создать заказ"/>
 </form>
 </body>
