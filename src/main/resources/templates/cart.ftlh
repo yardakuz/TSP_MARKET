@@ -7,7 +7,7 @@
 <body>
 <h1>TSP</h1><gr></gr>
 <hr>
-<h4>Корзина пользователя</h4>
+<h3>Корзина пользователя <i>${user.name}</i></h3>
 <form method="post" action="/order/create" modelAttribute="technique">
     <#list cart as product>
         <div>

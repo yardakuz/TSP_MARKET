@@ -42,7 +42,7 @@ public class OrderController {
 
     //создание заказа
     @PostMapping("/order/create")
-    public String createOrder(Order order,Technique technique, Principal principal, @RequestParam("techniques[]") Long[] techniqueIds, @RequestParam("amount") int amount, Model model){
+    public String createOrder(Order order,Technique technique, Principal principal, @RequestParam("techniques[]") Long[] techniqueIds, Model model){
         List<Technique> techniques = techniqueRepository.findAllById(List.of(techniqueIds));
         //techniques.add(technique);
         orderService.createOrder(order, techniques, principal);
@@ -58,11 +58,13 @@ public class OrderController {
         //model.addAttribute("roles", Role.values());
         return "order-edit";
     }
-    //
 
-    @PostMapping("/admin/order/edit/")
-    public String orderEdit(@RequestParam("orderId") Order order){
+
+    @PostMapping("/order/active/{order}")
+    public String orderEdit(@PathVariable("order") Order order){
         orderService.changeOrderActive(order);
-        return "redirect:/";
+        return "redirect:/admin/order";
     }
+
+
 }

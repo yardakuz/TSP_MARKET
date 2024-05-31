@@ -13,6 +13,7 @@
     </form>
     <#if user.isAdmin()>
         <a href="/admin">Панель администратора</a>
+        <a href="/admin/order">Панель заказов</a>
     </#if>
 <#else>
     <a href="/login">Войти</a>
@@ -53,7 +54,7 @@
     <input type="submit" value="Добавить товар"/>
 </form>
 </#if>
-<#if !user.isAdmin()>
+<#if !user.isAdmin() && user.email??>
     <a href="/user-cart">Корзина</a>
 </#if>
 </body>

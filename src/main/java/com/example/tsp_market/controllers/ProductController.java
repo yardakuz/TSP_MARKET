@@ -2,6 +2,7 @@ package com.example.tsp_market.controllers;
 
 import com.example.tsp_market.models.Technique;
 import com.example.tsp_market.services.ProductService;
+import com.example.tsp_market.services.UserService;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import lombok.RequiredArgsConstructor;
 import netscape.javascript.JSObject;
@@ -21,6 +22,7 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
+
 
     @GetMapping("/")
     public String products(@RequestParam(name = "title", required = false) String title, Principal principal, Model model) {
@@ -59,7 +61,7 @@ public class ProductController {
     @GetMapping("/user-cart")
     public String cart(Principal principal, Model model) {
         model.addAttribute("cart", productService.getCart());
-        //model.addAttribute("cartJson", productService.getUserByPrincipal(principal));
+        model.addAttribute("user", productService.getUserByPrincipal(principal));
         return "cart";
     }
 
