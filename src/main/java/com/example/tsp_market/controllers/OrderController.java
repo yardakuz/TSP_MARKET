@@ -4,6 +4,7 @@ import com.example.tsp_market.models.*;
 import com.example.tsp_market.models.enums.Role;
 import com.example.tsp_market.repositories.ImageRepository;
 import com.example.tsp_market.repositories.TechniqueRepository;
+import com.example.tsp_market.repositories.UserRepository;
 import com.example.tsp_market.services.OrderService;
 import com.example.tsp_market.services.ProductService;
 import com.example.tsp_market.services.UserService;
@@ -32,12 +33,19 @@ public class OrderController {
     private final UserService userService;
     private final TechniqueRepository techniqueRepository;
     private OrderTechnique orderTechnique;
+    private final UserRepository userRepository;
 
 
     @GetMapping("/admin/order")
     public String orderOpen(Model model){
         model.addAttribute("orders", orderService.list());
         return "order_panel";
+    }
+
+    @GetMapping("/order/history")
+    public String orderHistory(Model model, Principal principal){
+        model.addAttribute("orders", orderService.listByUser(principal));
+        return "order-history";
     }
 
     //создание заказа

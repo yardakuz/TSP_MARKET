@@ -15,6 +15,9 @@
         <a href="/admin">Панель администратора</a>
         <a href="/admin/order">Панель заказов</a>
     </#if>
+    <#if !user.isAdmin()>
+        <a href="/admin">История заказов</a>
+    </#if>
 <#else>
     <a href="/login">Войти</a>
 </#if>
