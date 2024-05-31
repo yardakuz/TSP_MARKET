@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>TSP</h1>
-<h4>Панель администратора(заказы)</h4>
+<h4>История заказов</h4>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -22,14 +22,7 @@
                     <li>${tech.title}</li>
                 </#list>
             </th>
-            <th><#if order.active>true<#else>false</#if></th>
-
-            <th>
-                <form action="/order/active/${order.id}" method="post">
-                    <input type="hidden" name="_csrf" value="${_csrf.token}">
-                    <input type="submit" value="Изменить активность">
-                </form>
-            </th>
+            <th><#if order.active>В обработке<#else>Выполнен</#if></th>
         </tr>
     <#else>
         <h3>Заказов нет</h3>

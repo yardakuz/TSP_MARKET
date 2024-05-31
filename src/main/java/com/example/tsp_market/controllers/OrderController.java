@@ -44,7 +44,7 @@ public class OrderController {
 
     @GetMapping("/order/history")
     public String orderHistory(Model model, Principal principal){
-        model.addAttribute("orders", orderService.listByUser(principal));
+        model.addAttribute("orders", orderService.userlist(principal));
         return "order-history";
     }
 
@@ -58,12 +58,11 @@ public class OrderController {
         return "redirect:/";
     }
 
-    //Обновление состояния заказа
+
 
     @GetMapping("/admin/order/edit/{order}")
     public String orderEdit(@PathVariable("order") List<Technique> order, Model model){
         model.addAttribute("order", order);
-        //model.addAttribute("roles", Role.values());
         return "order-edit";
     }
 

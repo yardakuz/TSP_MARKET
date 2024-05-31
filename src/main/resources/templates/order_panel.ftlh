@@ -9,6 +9,7 @@
 <table border="1">
     <tr>
         <th>ID</th>
+        <th>e-mail пользователя</th>
         <th>Цена</th>
         <th>Список товаров</th>
         <th>Активность</th>
@@ -17,13 +18,14 @@
     <#list orders as order>
         <tr>
             <th>${order.id}</th>
+            <th>${order.user.email}</th>
             <th>${order.price}</th>
             <th>
                 <#list order.techniques as tech>
                     <li>${tech.title}</li>
                 </#list>
             </th>
-            <th><#if order.active>true<#else>false</#if></th>
+            <th><#if order.active>В обработке<#else>Выполнен</#if></th>
 
             <th>
                 <form action="/order/active/${order.id}" method="post">

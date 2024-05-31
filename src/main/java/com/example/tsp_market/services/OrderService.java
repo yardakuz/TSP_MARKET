@@ -24,7 +24,6 @@ public class OrderService {
     private final UserRepository userRepository;
     private final TechniqueRepository techniqueRepository;
     private final ProductService productService;
-    //private List<Technique> cart = new ArrayList<>();
 
 
 
@@ -46,7 +45,9 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-
+    public List<Order> userlist(Principal principal){
+        return orderRepository.findByUserId(productService.getUserByPrincipal(principal).getId());
+    }
 
     public void changeOrderActive(Order order) {
        order.setActive(!order.isActive());

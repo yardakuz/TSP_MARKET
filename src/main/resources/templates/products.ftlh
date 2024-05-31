@@ -16,7 +16,7 @@
         <a href="/admin/order">Панель заказов</a>
     </#if>
     <#if !user.isAdmin()>
-        <a href="/admin">История заказов</a>
+        <a href="/order/history">История заказов</a>
     </#if>
 <#else>
     <a href="/login">Войти</a>
