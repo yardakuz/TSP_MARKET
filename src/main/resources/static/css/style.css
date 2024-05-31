@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+a {
+    color: #255000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input, select{
+    margin-top: 5px;
+}
+
+h1{
+    color: red;
+}
