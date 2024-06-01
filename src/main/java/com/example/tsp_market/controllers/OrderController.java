@@ -37,14 +37,16 @@ public class OrderController {
 
 
     @GetMapping("/admin/order")
-    public String orderOpen(Model model){
+    public String orderOpen(Model model, Principal principal){
         model.addAttribute("orders", orderService.list());
+        model.addAttribute("user", userService.getUserByPrincipal(principal));
         return "order_panel";
     }
 
     @GetMapping("/order/history")
     public String orderHistory(Model model, Principal principal){
         model.addAttribute("orders", orderService.userlist(principal));
+        model.addAttribute("user", userService.getUserByPrincipal(principal));
         return "order-history";
     }
 

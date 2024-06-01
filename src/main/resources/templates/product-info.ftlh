@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>TSP</title>
-</head>
-<body>
+<#import "blocks/template.ftlh" as t>
+<@t.template user>
 <h1>TSP</h1><hr>
 <h4>Информация о товаре</h4>
 <#list images as img>
@@ -19,5 +15,4 @@
         <input type="submit" value="Удалить товар"/>
     </form>
 </#if>
-</body>
-</html>
+</@t.template>

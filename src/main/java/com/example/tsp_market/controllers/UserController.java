@@ -10,13 +10,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+
 @Controller
 @RequiredArgsConstructor
 public class  UserController {
     private final UserService userService;
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Principal principal, Model model) {
+        model.addAttribute("user", userService.getUserByPrincipal(principal));
         return "login";
     }
 
@@ -40,6 +43,5 @@ public class  UserController {
         model.addAttribute("products", user.getProducts());
         return "user-info";
     }
-
 
 }

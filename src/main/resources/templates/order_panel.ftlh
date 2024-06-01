@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>TSP</title>
-</head>
-<body>
+<#import "blocks/template.ftlh" as t>
+<@t.template user>
 <h1>TSP</h1>
 <h4>Панель администратора(заказы)</h4>
 <table border="1">
@@ -38,5 +34,4 @@
         <h3>Заказов нет</h3>
     </#list>
 </table>
-</body>
-</html>
+</@t.template>

@@ -1,28 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>TSP</title>
-</head>
-<body>
-<h1>TSP</h1><gr></gr>
-<#if user.email??>
-    <h3>Имя пользователя: <i>${user.name}</i></h3>
-    <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="${_csrf.token}">
-        <input type="submit" value="Выйти">
-    </form>
-    <#if user.isAdmin()>
-        <a href="/admin">Панель администратора</a>
-        <a href="/admin/order">Панель заказов</a>
-    </#if>
-    <#if !user.isAdmin()>
-        <a href="/order/history">История заказов</a>
-    </#if>
-<#else>
-    <a href="/login">Войти</a>
-</#if>
-<hr>
-<h4>Список товаров</h4>
+<#import "blocks/template.ftlh" as t>
+<@t.template user>
+<h4>Список товаров</h4><hr>
 <form action="/" method="get">
     Поиск по названию товара: <input type="text" name="title">
     <input type="submit" value="Поиск"/>
@@ -57,8 +35,5 @@
     <input type="submit" value="Добавить товар"/>
 </form>
 </#if>
-<#if !user.isAdmin() && user.email??>
-    <a href="/user-cart">Корзина</a>
-</#if>
-</body>
-</html>
+
+</@t.template>

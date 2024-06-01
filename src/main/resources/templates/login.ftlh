@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<#import "blocks/template.ftlh" as t>
+<@t.template user>
 <head>
     <title>TSP</title>
 </head>
@@ -13,5 +13,4 @@
     <input type="submit" value="Вход"/>
 </form>
 <a href="/registration">Зарегистрироваться</a>
-</body>
-</html>
+</@t.template>

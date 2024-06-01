@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>TSP</title>
-</head>
-<body>
-<h1>TSP</h1><gr></gr>
-<hr>
+<#import "blocks/template.ftlh" as t>
+<@t.template user>
 <h3>Корзина пользователя <i>${user.name}</i></h3>
 <form method="post" action="/order/create" modelAttribute="technique">
     <#list cart as product>
@@ -25,5 +18,4 @@
     <input type="hidden" name = "_csrf" value="${_csrf.token}">
     <input type="submit" value="Создать заказ"/>
 </form>
-</body>
-</html>
+</@t.template>
