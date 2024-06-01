@@ -1,6 +1,9 @@
 package com.example.tsp_market.controllers;
 
 import com.example.tsp_market.models.User;
+import com.example.tsp_market.repositories.OrderRepository;
+import com.example.tsp_market.services.OrderService;
+import com.example.tsp_market.services.ProductService;
 import com.example.tsp_market.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,9 @@ import java.security.Principal;
 @RequiredArgsConstructor
 public class  UserController {
     private final UserService userService;
+    private final ProductService productService;
+    private final OrderService orderService;
+    private final OrderRepository orderRepository;
 
     @GetMapping("/login")
     public String login(Principal principal, Model model) {
@@ -41,9 +47,10 @@ public class  UserController {
     }
 
     @GetMapping("/user/{user}")
-    public String userInfo(@PathVariable("user") User user, Model model){
+    public String userInfo(@PathVariable("user") User user, Model model, Principal principal){
         model.addAttribute("user", user);
-        model.addAttribute("products", user.getProducts());
+        model.addAttribute("principal", userService.getUserByPrincipal(principal));
+        model.addAttribute("orders", orderRepository.findByUserId(user.getId()));
         return "user-info";
     }
 

@@ -5,22 +5,21 @@
     Поиск по названию товара: <input type="text" name="title">
     <input type="submit" value="Поиск"/>
 </form>
-<#list products as product>
-    <div>
-        <p>
-            <b>${product.title}</b>
-            ${product.price} руб. | <a href="/product/${product.id}">Подробнее...</a> |
-            <#if !user.isAdmin() && user.email??>
-                <form action="product/cart/${product.id}" method="post">
-                    <input type="hidden" name="_csrf" value="${_csrf.token}">
-                    <input type="submit"  value="Добавить в корзину">
-                </form>
-            </#if>
-        </p>
-    </div>
+    <#list products as product>
+        <a href="/product/${product.id}" class="product-link">
+            <div class="card text-white bg-dark my-3 product">
+
+                <img src="/images/${product.previewImageId}"
+                     class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">${product.title}</h5>
+                    <p class="card-text">${product.price} ₽</p>
+                </div>
+            </div>
+        </a>
     <#else>
-    <h3>Товаров  нет</h3>
-</#list>
+        <h1 style="text-align: center">Не найдено</h1>
+    </#list>
 <#if user.isAdmin()>
 <hr>
 <h3>Создать новый товар</h3>

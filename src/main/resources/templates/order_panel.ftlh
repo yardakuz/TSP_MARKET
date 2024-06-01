@@ -2,14 +2,14 @@
 <@t.template user>
 <h1>TSP</h1>
 <h4>Панель администратора(заказы)</h4>
-<table border="1">
+    <table class="table table-hover table-dark">
     <tr>
-        <th>ID</th>
-        <th>e-mail пользователя</th>
-        <th>Цена</th>
-        <th>Список товаров</th>
-        <th>Активность</th>
-        <th>Сменить активность</th>
+        <th scope="col">ID</th>
+        <th scope="col">e-mail пользователя</th>
+        <th scope="col">Цена</th>
+        <th scope="col">Список товаров</th>
+        <th scope="col">Активность</th>
+        <th scope="col">Сменить активность</th>
     </tr>
     <#list orders as order>
         <tr>

@@ -1,15 +1,15 @@
 <#import "blocks/template.ftlh" as t>
 <@t.template user>
-<h4>Панель администратора</h4>
-<table border="1">
+    <h1 style="text-align: center">Панель администратора</h1><hr>
+    <table class="table table-hover table-dark">
     <tr>
-        <th>Email</th>
-        <th>Номер телефона</th>
-        <th>Активность</th>
-        <th>Роли</th>
-        <th>Бан</th>
-        <th>Редактирование</th>
-        <th>Подробная информация</th>
+        <th scope="col">Email</th>
+        <th scope="col">Номер телефона</th>
+        <th scope="col">Активность</th>
+        <th scope="col">Роли</th>
+        <th scope="col">Бан</th>
+        <th scope="col">Редактирование</th>
+        <th scope="col">Подробная информация</th>
     </tr>
     <#list users as user1>
         <tr>
@@ -20,7 +20,7 @@
             <th>
                 <form action="admin/user/ban/${user1.id}" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}">
-                    <input type="submit" value="Бан">
+                    <input type="submit"  class="btn btn-light" value="Бан">
                 </form>
             </th>
             <th><a href="/admin/user/edit/${user1.id}">Редактирование</a></th>

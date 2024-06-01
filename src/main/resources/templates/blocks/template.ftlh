@@ -21,14 +21,24 @@
                 <span class="navbar-brand mb-0 h1">TSP</span>
             </a>
             <#if user.isAdmin()>
-                <a href="/admin">Панель администратора</a>
-                <a href="/admin/order">Панель заказов</a>
+                <button class="btn btn-light my-2 my-sm-0" type="button"
+                        onclick="window.location.href = '/admin'">
+                    Панель администратора
+                </button>
+                <button class="btn btn-light my-2 my-sm-0" type="button"
+                        onclick="window.location.href = '/admin/order'">
+                    Панель заказов
+                </button>
             </#if>
             <#if user.email?? && !user.isAdmin()>
-                <div class="dropdown text-end">
-                    <a href="/user-cart">Корзина </a>
-                    <a href="/order/history">История заказов </a>
-                </div>
+                <button class="btn btn-light my-2 my-sm-0" type="button"
+                        onclick="window.location.href = '/user-cart'">
+                    Корзина
+                </button>
+                <button class="btn btn-light my-2 my-sm-0" type="button"
+                        onclick="window.location.href = 'order/history'">
+                    История заказов
+                </button>
             </#if>
             <#if !user.email??>
                 <button class="btn btn-light my-2 my-sm-0" type="button"
@@ -37,7 +47,10 @@
                 </button>
             </#if>
             <#if user.email??>
-                <a href="/login?logout">Выйти</a>
+                <button class="btn btn-light my-2 my-sm-0" type="button"
+                        onclick="window.location.href = '/login?logout'">
+                    Выйти
+                </button>
             </#if>
         </div>
     </nav>
