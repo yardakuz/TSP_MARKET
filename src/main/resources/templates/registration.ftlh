@@ -14,8 +14,8 @@
     <input type="hidden" name="_csrf" value="${_csrf.token}">
     <input type="submit" value="Зарегистрироваться"/>
 </form>
-<#if errorMessage??>
-    <h2 style="color: red">${errorMessage}</h2>
+<#if error??>
+    <h2 style="color: red">${error}</h2>
 </#if>
 </body>
 </html>

@@ -18,7 +18,7 @@
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <a href="/">
-                <span class="navbar-brand mb-0 h1"><#if user.email??>Hello, ${user.name}<#else>Hello</#if></span>
+                <span class="navbar-brand mb-0 h1">TSP</span>
             </a>
             <#if user.isAdmin()>
                 <a href="/admin">Панель администратора</a>
@@ -29,7 +29,8 @@
                     <a href="/user-cart">Корзина </a>
                     <a href="/order/history">История заказов </a>
                 </div>
-            <#else>
+            </#if>
+            <#if !user.email??>
                 <button class="btn btn-light my-2 my-sm-0" type="button"
                         onclick="window.location.href = '/login'">
                     Войти

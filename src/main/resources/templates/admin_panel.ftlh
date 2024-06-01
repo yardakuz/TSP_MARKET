@@ -11,20 +11,20 @@
         <th>Редактирование</th>
         <th>Подробная информация</th>
     </tr>
-    <#list users as user>
+    <#list users as user1>
         <tr>
-            <th>${user.email}</th>
-            <th><#if user.phoneNumber?has_content>${user.phoneNumber}<#else>None</#if></th>
-            <th><#if user.active>true<#else>false</#if></th>
-            <th><#list user.roles as role>${role}</#list></th>
+            <th>${user1.email}</th>
+            <th><#if user1.phoneNumber?has_content>${user1.phoneNumber}<#else>None</#if></th>
+            <th><#if user1.active>true<#else>false</#if></th>
+            <th><#list user1.roles as role>${role}</#list></th>
             <th>
-                <form action="admin/user/ban/${user.id}" method="post">
+                <form action="admin/user/ban/${user1.id}" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}">
                     <input type="submit" value="Бан">
                 </form>
             </th>
-            <th><a href="/admin/user/edit/${user.id}">Редактирование</a></th>
-            <th><a href="/user/${user.id}">Подробная информация</a></th>
+            <th><a href="/admin/user/edit/${user1.id}">Редактирование</a></th>
+            <th><a href="/user/${user1.id}">Подробная информация</a></th>
         </tr>
     <#else>
         <h3>Пользователей нет</h3>

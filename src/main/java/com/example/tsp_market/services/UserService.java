@@ -60,6 +60,7 @@ public class UserService {
     }
 
 
+
     public void changeUserRoles(User user, Map<String, String> form) {
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)

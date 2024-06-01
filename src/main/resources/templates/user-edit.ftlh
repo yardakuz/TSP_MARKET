@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>TSP</title>
-</head>
-<body>
+<#import "blocks/template.ftlh" as t>
+<@t.template user>
 <h1>TSP</h1><hr>
 <h3>Редактирование пользователя ${user.name}</h3>
 <form action="/admin/user/edit" method="post">
@@ -16,5 +12,4 @@
     <input type="hidden" value="${_csrf.token}" name="_csrf">
     <button type="submit">Сохранить</button>
 </form>
-</body>
-</html>
+</@t.template>

@@ -24,9 +24,12 @@ public class  UserController {
     }
 
     @GetMapping("/registration")
-    public String registration() {
+    public String registration(Model model, Principal principal) {
+        model.addAttribute("user", userService.getUserByPrincipal(principal));
         return "registration";
     }
+
+
 
     @PostMapping("/registration")
     public String createUser(User user, Model model) {
