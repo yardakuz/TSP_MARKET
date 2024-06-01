@@ -20,7 +20,7 @@ import java.security.Principal;
 
 @Controller
 @RequiredArgsConstructor
-public class ProductController {
+public class   ProductController {
     private final ProductService productService;
 
 

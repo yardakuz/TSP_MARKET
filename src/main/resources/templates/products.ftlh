@@ -6,17 +6,29 @@
     <input type="submit" value="Поиск"/>
 </form>
     <#list products as product>
+        <div class="row row-cols-2 row-cols-md-2 g-4">
+            <div class="col">
         <a href="/product/${product.id}" class="product-link">
-            <div class="card text-white bg-dark my-3 product">
-
+            <div class="card text-white bg-dark my-3 product" style="width: 18rem;">
                 <img src="/images/${product.previewImageId}"
                      class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">${product.title}</h5>
                     <p class="card-text">${product.price} ₽</p>
+                    <#if !user.isAdmin()>
+                    <form action="/product/cart/${product.id}" method="post">
+                        <input type="hidden" name = "_csrf" value="${_csrf.token}">
+                        <input type="submit" value="Добавить товар в корзину"/>
+                    </form>
+                    </#if>
                 </div>
+
             </div>
+
         </a>
+            </div>
+
+        </div>
     <#else>
         <h1 style="text-align: center">Не найдено</h1>
     </#list>

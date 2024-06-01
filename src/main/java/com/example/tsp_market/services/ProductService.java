@@ -2,8 +2,10 @@ package com.example.tsp_market.services;
 
 
 import com.example.tsp_market.models.Image;
+import com.example.tsp_market.models.Order;
 import com.example.tsp_market.models.Technique;
 import com.example.tsp_market.models.User;
+import com.example.tsp_market.repositories.OrderRepository;
 import com.example.tsp_market.repositories.TechniqueRepository;
 import com.example.tsp_market.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import java.util.List;
 public class ProductService {
     private final TechniqueRepository techniqueRepository;
     private final UserRepository userRepository;
+    private final OrderRepository orderRepository;
     private List<Technique> Cart = new ArrayList<>();
 
     public List<Technique> listProducts(String title) {
@@ -68,6 +71,7 @@ public class ProductService {
         image.setBytes(file.getBytes());
         return image;
     }
+
 
     public void removeProduct(Long id) {
         techniqueRepository.deleteById(id);

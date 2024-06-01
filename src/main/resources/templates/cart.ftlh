@@ -6,7 +6,7 @@
         <div>
             <p>
                 <b>${product.title}</b>
-                ${product.price} руб. <input type="number" name="amount">
+                ${product.price} руб.
             </p>
         </div>
     <#else>
