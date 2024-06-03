@@ -24,7 +24,7 @@ import java.util.Map;
 
 @Controller
 
-//@RestController
+@RestController
 @RequiredArgsConstructor
 public class OrderController {
 
