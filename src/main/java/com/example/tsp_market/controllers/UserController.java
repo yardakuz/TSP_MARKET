@@ -36,7 +36,6 @@ public class  UserController {
     }
 
 
-
     @PostMapping("/registration")
     public String createUser(User user, Model model) {
         if(!userService.createUser(user)){

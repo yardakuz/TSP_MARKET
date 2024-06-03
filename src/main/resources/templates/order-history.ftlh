@@ -1,13 +1,13 @@
 <#import "blocks/template.ftlh" as t>
 <@t.template user>
 <h1>TSP</h1>
-<h4>История заказов</h4>
-<table border="1">
+<h4 style="text-align: center">История заказов</h4>
+<table class="table table-hover table-dark">
     <tr>
-        <th>ID</th>
-        <th>Цена</th>
-        <th>Список товаров</th>
-        <th>Активность</th>
+        <th scope>ID</th>
+        <th scope>Цена</th>
+        <th scope>Список товаров</th>
+        <th scope>Активность</th>
     </tr>
     <#list orders as order>
         <tr>
