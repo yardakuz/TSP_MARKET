@@ -42,12 +42,14 @@ public class ProductService {
             image1.setPreviewImage(true);
             product.addImageToProduct(image1);
         }
-        if (file2.getSize() != 0){
+        else if (file2.getSize() != 0){
             image2 = toImageEntity(file2);
+            image2.setPreviewImage(true);
             product.addImageToProduct(image2);
         }
-        if (file3.getSize() != 0){
+        else if (file3.getSize() != 0){
             image3 = toImageEntity(file3);
+            image3.setPreviewImage(true);
             product.addImageToProduct(image3);
         }
 
@@ -98,5 +100,18 @@ public class ProductService {
     public List<Technique> delCart()
     {
         return Cart = new ArrayList<>();
+    }
+
+    public void deleteTechnique(Long id)
+    {
+        List<Long> orderIds = new ArrayList<>();
+        List<Order> orders = orderRepository.findByTechniques(techniqueRepository.getById(id));
+        for (Order order : orders) {
+            orderIds.add(order.getId());
+        }
+        for (Long orderId : orderIds) {
+            orderRepository.deleteById(orderId);
+        }
+        techniqueRepository.deleteById(id);
     }
 }

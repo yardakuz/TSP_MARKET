@@ -1,10 +1,10 @@
 <#import "blocks/template.ftlh" as t>
 <@t.template user>
 <h4>Список товаров</h4><hr>
-<form action="/" method="get">
-    Поиск по названию товара: <input type="text" name="title">
-    <input type="submit" value="Поиск"/>
-</form>
+    <form action="/" method="get">
+        Поиск по названию товара: <input type="text" name="title">
+        <input type="submit" value="Поиск"/>
+    </form>
     <#list products as product>
         <div class="row row-cols-2 row-cols-md-2 g-4">
             <div class="col">
@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h5 class="card-title">${product.title}</h5>
                     <p class="card-text">${product.price} ₽</p>
-                    <#if !user.isAdmin()>
+                    <#if !user.isAdmin() && user.email??>
                     <form action="/product/cart/${product.id}" method="post">
                         <input type="hidden" name = "_csrf" value="${_csrf.token}">
                         <input type="submit" value="Добавить товар в корзину"/>

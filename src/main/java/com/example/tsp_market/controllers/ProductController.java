@@ -48,7 +48,7 @@ public class   ProductController {
 
     @PostMapping("/product/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {
-        productService.removeProduct(id);
+        productService.deleteTechnique(id);
         return "redirect:/";
     }
 
@@ -60,6 +60,7 @@ public class   ProductController {
 
     @GetMapping("/user-cart")
     public String cart(Principal principal, Model model) {
+        if (productService.getUserByPrincipal(principal).isAdmin()) {return "error";}
         model.addAttribute("cart", productService.getCart());
         model.addAttribute("user", productService.getUserByPrincipal(principal));
         return "cart";

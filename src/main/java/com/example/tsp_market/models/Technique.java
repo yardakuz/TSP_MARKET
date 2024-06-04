@@ -21,16 +21,16 @@ public class Technique {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
 
     @Column(name = "description", columnDefinition = "text")
     private String description;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private int price;
 
-    @Column(name = "image")
+    @Column(name = "image", nullable = false)
     private String image;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")

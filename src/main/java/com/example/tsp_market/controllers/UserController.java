@@ -47,6 +47,7 @@ public class  UserController {
 
     @GetMapping("/user/{user}")
     public String userInfo(@PathVariable("user") User user, Model model, Principal principal){
+        if (!productService.getUserByPrincipal(principal).isAdmin()) {return "error";}
         model.addAttribute("user", user);
         model.addAttribute("principal", userService.getUserByPrincipal(principal));
         model.addAttribute("orders", orderRepository.findByUserId(user.getId()));

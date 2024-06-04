@@ -53,4 +53,8 @@ public class OrderService {
        order.setActive(!order.isActive());
         orderRepository.save(order);
     }
+
+    public void deleteOrder(Order order) {
+
+    }
 }

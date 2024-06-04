@@ -36,6 +36,7 @@ public class OrderController {
 
     @GetMapping("/admin/order")
     public String orderOpen(Model model, Principal principal){
+        if (!productService.getUserByPrincipal(principal).isAdmin()) {return "error";}
         model.addAttribute("orders", orderService.list());
         model.addAttribute("user", userService.getUserByPrincipal(principal));
         return "order_panel";
@@ -43,6 +44,7 @@ public class OrderController {
 
     @GetMapping("/order/history")
     public String orderHistory(Model model, Principal principal){
+        if (productService.getUserByPrincipal(principal).isAdmin()) {return "error";}
         model.addAttribute("orders", orderService.userlist(principal));
         model.addAttribute("user", userService.getUserByPrincipal(principal));
         return "order-history";
@@ -61,7 +63,8 @@ public class OrderController {
 
 
     @GetMapping("/admin/order/edit/{order}")
-    public String orderEdit(@PathVariable("order") List<Technique> order, Model model){
+    public String orderEdit(@PathVariable("order") List<Technique> order, Model model, Principal principal){
+        if (!productService.getUserByPrincipal(principal).isAdmin()) {return "error";}
         model.addAttribute("order", order);
         return "order-edit";
     }
