@@ -106,6 +106,11 @@ public class ProductService {
     {
         List<Long> orderIds = new ArrayList<>();
         List<Order> orders = orderRepository.findByTechniques(techniqueRepository.getById(id));
+        if (orders == null)
+        {
+            techniqueRepository.deleteById(id);
+            return;
+        }
         for (Order order : orders) {
             orderIds.add(order.getId());
         }

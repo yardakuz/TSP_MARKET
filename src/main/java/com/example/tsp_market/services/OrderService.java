@@ -27,7 +27,8 @@ public class OrderService {
 
 
 
-    public boolean createOrder(Order order, List<Technique> techniques, Principal principal) {
+    public boolean createOrder(List<Technique> techniques, Principal principal) {
+        Order order = new Order();
         int price = 0;
         for (Technique technique : techniques) {
             price += technique.getPrice();

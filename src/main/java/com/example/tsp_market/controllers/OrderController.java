@@ -55,7 +55,7 @@ public class OrderController {
     public String createOrder(Order order,Technique technique, Principal principal, @RequestParam("techniques[]") Long[] techniqueIds, Model model){
         List<Technique> techniques = techniqueRepository.findAllById(List.of(techniqueIds));
         //techniques.add(technique);
-        orderService.createOrder(order, techniques, principal);
+        orderService.createOrder(techniques, principal);
         productService.delCart();
         return "redirect:/";
     }

@@ -30,7 +30,7 @@ public class Technique {
     @Column(name = "price", nullable = false)
     private int price;
 
-    @Column(name = "image", nullable = false)
+    @Column(name = "image")
     private String image;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
